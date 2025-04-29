@@ -4,7 +4,7 @@ const Header = () => {
   return (
     <header className="flex flex-col items-center justify-center p-4 gap-3 sm:p-6 md:p-8">
       <img
-        src="/src/assets/pokeApiLogo.png"
+        src="/pokeApiLogo.png"
         alt="logo"
         className="w-40 sm:w-64 md:w-72 lg:w-80 h-auto"
       />
