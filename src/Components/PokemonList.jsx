@@ -72,7 +72,7 @@ const PokemonList = () => {
     <div className="p-4">
       <SearchBar searchTerm={searchTerm} onSearchChange={setSearchTerm} />
 
-      {/* Type Filter Buttons */}
+      {/* filter  */}
       <div className="flex flex-wrap gap-2 my-4 mx-30">
         {pokemonTypes.map((type) => (
           <button
@@ -93,7 +93,6 @@ const PokemonList = () => {
         </button>
       </div>
 
-      {/* Pokémon Grid */}
       {loading ? (
         <p>Loading...</p>
       ) : error ? (
