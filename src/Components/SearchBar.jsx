@@ -1,16 +1,16 @@
-import React from 'react';
-
-const SearchBar = ({ searchTerm, onSearchChange }) => {
+const SearchBar = ({ searchTerm, setSearchTerm }) => {
   return (
-    <div className="bg-[#353030] max-w-9xl h-[150px] my-2 mx-30 flex justify-center items-center flex-col gap-2">
+    <div className="bg-[#353030] w-full h-auto py-6 px-4 sm:px-10 md:px-20 lg:px-20 flex flex-col justify-center items-center gap-3">
       <input
         type="text"
         placeholder="Search Pokémon"
-        className="font-pixel border-2 border-white bg-white max-w-xl p-3 max-h-lg rounded-lg ring-blue-400"
+        className="font-pixel border-2 border-white bg-white w-full max-w-md p-3 rounded-lg ring-blue-400"
         value={searchTerm}
-        onChange={(e) => onSearchChange(e.target.value)}
+        onChange={(e) => {
+          setSearchTerm(e.target.value);
+        }}
       />
-      <h1 className="font-pixel text-left text-white text-[11px] max-w-[250px] ml-7">
+      <h1 className="font-pixel text-white text-xs sm:text-sm text-center sm:text-left max-w-xs">
         Use this input to search for any Pokémon. In an instant.
       </h1>
     </div>

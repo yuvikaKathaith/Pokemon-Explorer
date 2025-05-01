@@ -1,35 +1,48 @@
 import React from 'react';
+import { getTypeColour } from '../utils/pokemonTypeColour';
 
 const PokemonCard = ({ pokemon }) => {
-    return (
-        <div className="bg-gray-100 rounded-xl shadow p-4 text-center w-full max-w-xs sm:max-w-sm md:max-w-md mx-auto">
-            <div className="bg-gray-200 rounded-lg h-32 sm:h-36 md:h-40 flex items-center justify-center mb-2 relative overflow-hidden">
-                <img
-                    src={pokemon.image}
-                    alt={pokemon.name}
-                    className="h-24 w-24 object-contain pixelated transition-transform transform duration-300 hover:scale-125"
-                />
-            </div>
+  return (
+    <div className="flex flex-col py-5 mx-auto rounded-md gap-5 flex-wrap w-[250px] sm:w-[250px] md:w-[250px]">
+      {/* Image */}
+      <div className="flex items-center justify-center bg-[#d1d1da] w-full h-[200px] rounded-lg overflow-hidden">
+        <img
+          src={pokemon.sprites.other.dream_world.front_default}
+          alt={pokemon.name}
+          className="w-[150px] h-[150px] transition-transform duration-300 ease-in-out hover:scale-110"
+        />
+      </div>
 
-            <div className="flex justify-between text-sm text-gray-600 mb-1 px-2">
-                <span>#{String(pokemon.id).padStart(3, '0')}</span>
-                <span>EXP: {pokemon.base_experience}</span>
-            </div>
+      {/* ID and EXP */}
+      <div className="flex flex-row justify-between text-sm px-1">
+        <h1>#00{pokemon.id}</h1>
+        <h1>EXP: {pokemon.base_experience}</h1>
+      </div>
 
-            <h2 className="font-pixelify text-md capitalize">{pokemon.name}</h2>
+      {/* Name */}
+      <div className="text-center sm:text-left px-1">
+        <h1 className="font-semibold capitalize text-2xl">{pokemon.name}</h1>
+      </div>
 
-            <div className="flex justify-center gap-2 mt-1 flex-wrap px-2">
-                {pokemon.types.map((type) => (
-                    <span
-                        key={type}
-                        className="bg-black text-white rounded-full px-2 py-1 text-xs sm:text-sm font-bold"
-                    >
-                        {type}
-                    </span>
-                ))}
-            </div>
-        </div>
-    );
+      {/* Types */}
+      <div className="flex flex-wrap justify-center sm:justify-start gap-2 px-1">
+        {pokemon.types.map((currType) => (
+          <div
+            key={currType.slot}
+            className={`capitalize rounded-3xl px-3 py-1 text-sm text-white text-center ${getTypeColour(currType.type.name)}`}
+          >
+            {currType.type.name}
+          </div>
+        ))}
+      </div>
+
+      {/* Height & Weight */}
+      <div className="text-left text-sm text-gray-700 px-1">
+        <p>Height: {pokemon.height}</p>
+        <p>Weight: {pokemon.weight}</p>
+      </div>
+    </div>
+  );
 };
 
 export default PokemonCard;
