@@ -4,17 +4,32 @@ import Header from "./Components/Header";
 import SearchBar from "./Components/SearchBar";
 import FilterbyType from "./Components/FilterbyType";
 import PokemonList from "./Components/PokemonList";
+import SortOptions from "./Components/SortOptions";
 
 function App() {
-  const [searchTerm, setSearchTerm] = useState('');
-  const [selectedType, setSelectedType] = useState('');
+  const [searchTerm, setSearchTerm] = useState("");
+  const [selectedTypes, setSelectedTypes] = useState([]);
+  const [sortOption, setSortOption] = useState("id");
 
   return (
     <>
       <Header />
-      <SearchBar searchTerm={searchTerm} setSearchTerm={setSearchTerm} />
-      <FilterbyType setSelectedType={setSelectedType} />
-      <PokemonList searchTerm={searchTerm} selectedType={selectedType} />
+      <SearchBar 
+        searchTerm={searchTerm} 
+        setSearchTerm={setSearchTerm} 
+      />
+      <div className="flex flex-row justify-center items-center">
+        <FilterbyType
+          selectedTypes={selectedTypes}
+          setSelectedTypes={setSelectedTypes}
+        />
+        <SortOptions sortOption={sortOption} setSortOption={setSortOption} />
+      </div>
+      <PokemonList 
+        searchTerm={searchTerm} 
+        selectedTypes={selectedTypes} 
+        sortOption={sortOption}
+      />
     </>
   );
 }

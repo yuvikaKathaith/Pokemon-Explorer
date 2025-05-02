@@ -12,7 +12,7 @@ const Pagination = ({currentPage, setCurrentPage, totalPages, itemsPerPage, setI
         }
     }
     const handleItemsPerPage = (e) => {
-        setItemsPerPage(e.target.value); 
+        setItemsPerPage(parseInt(e.target.value)); //note :-convert to a number as e.target.value is a string, if left as a string currentPage * itemsPerPage may act weird or break
         setCurrentPage(1); //set page to 1st page when changing items per page
     }
     return (
@@ -21,7 +21,7 @@ const Pagination = ({currentPage, setCurrentPage, totalPages, itemsPerPage, setI
                 <div>
                     <button
                         onClick={handlePreviousClick} 
-                        className="bg-yellow-600 text-white py-1 px-2 rounded-sm"
+                        className="bg-yellow-500 text-white py-1 px-2 rounded-sm"
                     >
                         Prev
                     </button>
@@ -32,7 +32,7 @@ const Pagination = ({currentPage, setCurrentPage, totalPages, itemsPerPage, setI
                 <div>
                     <button 
                         onClick={handleNextClick} 
-                        className="bg-yellow-600 text-white py-1 px-2 rounded-sm"
+                        className="bg-yellow-500 text-white py-1 px-2 rounded-sm"
                     >
                         Next
                     </button>

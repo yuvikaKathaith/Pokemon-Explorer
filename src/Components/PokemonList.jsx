@@ -4,7 +4,7 @@ import PokemonCard from "./PokemonCard";
 import { PacmanLoader } from "react-spinners";
 import Pagination from "./Pagination";
 
-const PokemonList = ({ searchTerm, selectedType }) => {
+const PokemonList = ({ searchTerm, selectedTypes, sortOption }) => {
   const [pokemonData, setPokemonData] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(false);
@@ -55,22 +55,32 @@ const PokemonList = ({ searchTerm, selectedType }) => {
     );
   }
 
-  // filter pokemons
+  // filter pokemons by search & multiple types
   const filteredPokemons = pokemonData.filter((poke) => {
-    const searchFilter = poke.data.name
-      .toLowerCase()
-      .includes(searchTerm.toLowerCase());
-    const typeFilter =
-      selectedType === "" ||
-      poke.data.types.some((type) => type.type.name === selectedType);
+    const searchFilter = poke.data.name.toLowerCase().includes(searchTerm.toLowerCase());
+    const typeFilter = selectedTypes.length === 0 || selectedTypes.every((selectedType) => (
+      poke.data.types.some((type) => type.type.name === selectedType)
+    ))
+
     return searchFilter && typeFilter;
+  });
+
+  //sorting
+  const sortedPokemons = [...filteredPokemons].sort((a, b) => {
+    if (sortOption === "aToz") {
+      return a.data.name.localeCompare(b.data.name);
+    } else if (sortOption === "zToa") {
+      return b.data.name.localeCompare(a.data.name);
+    } else {
+      return a.data.id - b.data.id; 
+    }
   });
 
   // pagination logic
   const totalPages = Math.ceil(filteredPokemons.length / itemsPerPage);
   const lastPostIndex = itemsPerPage * currentPage;
   const firstPostIndex = lastPostIndex - itemsPerPage;
-  const paginatedPokemons = filteredPokemons.slice(firstPostIndex, lastPostIndex);
+  const paginatedPokemons = sortedPokemons.slice(firstPostIndex, lastPostIndex);
 
   return (
     <div className="flex flex-col justify-center items-center h-full min-h-[40vh] px-4">
