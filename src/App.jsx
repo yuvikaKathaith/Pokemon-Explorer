@@ -6,6 +6,7 @@ import FilterbyType from "./Components/FilterbyType";
 import PokemonList from "./Components/PokemonList";
 import SortOptions from "./Components/SortOptions";
 import PokemonDetail from './Components/PokemonDetail';
+import FavoritesPage from "./Components/FavouritePage";
 
 function App() {
   const [searchTerm, setSearchTerm] = useState("");
@@ -34,6 +35,7 @@ function App() {
           </>
         } />
         <Route path="/pokemon/:id" element={<PokemonDetail />} />
+        <Route path="/favorites" element={<FavoritesPage />} />
       </Routes>
     </>
   );

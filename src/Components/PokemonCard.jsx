@@ -1,19 +1,24 @@
 import React from "react";
 import { getTypeColour } from "../utils/pokemonTypeColour";
 import { Link } from "react-router-dom";
+import { useFavorites } from "../contexts/favouriteContext";
 
 const PokemonCard = ({ pokemon }) => {
+  const { favorites, toggleFavorite } = useFavorites();
+  const isFav = favorites.some((fav) => fav.id === pokemon.id);
   return (
-    <Link to={`/pokemon/${pokemon.id}`}>
+    
       <div className="flex flex-col py-5 mx-auto rounded-md gap-5 flex-wrap w-[250px] sm:w-[250px] md:w-[250px]">
         {/* Image */}
-        <div className="flex items-center justify-center bg-[#d1d1da] w-full h-[200px] rounded-lg overflow-hidden">
-          <img
-            src={pokemon.sprites.other.dream_world.front_default}
-            alt={pokemon.name}
-            className="w-[150px] h-[150px] transition-transform duration-300 ease-in-out hover:scale-110"
-          />
-        </div>
+        <Link to={`/pokemon/${pokemon.id}`}>
+          <div className="flex items-center justify-center bg-[#d1d1da] w-full h-[200px] rounded-lg overflow-hidden">
+            <img
+              src={pokemon.sprites.other.dream_world.front_default}
+              alt={pokemon.name}
+              className="w-[150px] h-[150px] transition-transform duration-300 ease-in-out hover:scale-110"
+            />
+          </div>
+        </Link>
 
         {/* ID and EXP */}
         <div className="flex flex-row justify-between text-sm px-1">
@@ -22,10 +27,23 @@ const PokemonCard = ({ pokemon }) => {
         </div>
 
         {/* Name */}
-        <div className="text-center sm:text-left px-1">
-          <h1 className="font-semibold capitalize text-2xl">{pokemon.name}</h1>
+        <div className="flex flex-row justify-between">
+          <Link to={`/pokemon/${pokemon.id}`}>
+            <div className="text-center sm:text-left px-1">
+              <h1 className="font-semibold capitalize text-2xl">
+                {pokemon.name}
+              </h1>
+            </div>
+          </Link>
+          <div className="p-4 relative">
+            <button
+              onClick={() => toggleFavorite(pokemon)}
+              className="absolute top-2 right-2 text-red-500 text-xl"
+            >
+              {isFav ? "❤️" : "🤍"}
+            </button>
+          </div>
         </div>
-
         {/* Types */}
         <div className="flex flex-wrap justify-center sm:justify-start gap-2 px-1">
           {pokemon.types.map((currType) => (
@@ -46,7 +64,6 @@ const PokemonCard = ({ pokemon }) => {
           <p>Weight: {pokemon.weight}</p>
         </div>
       </div>
-    </Link>
   );
 };
 

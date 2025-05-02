@@ -13,6 +13,7 @@ const PokemonDetail = () => {
         const res = await axios.get(`https://pokeapi.co/api/v2/pokemon/${id}`);
         setPokemon(res.data);
       } catch (err) {
+        console.log(err)
         setError('Failed to fetch Pokémon data');
       }
     };
@@ -77,7 +78,7 @@ const PokemonDetail = () => {
       <div className="mt-6">
         <h3 className="text-xl font-semibold mb-2">Moves</h3>
         <p className="text-gray-700">
-          {pokemon.moves.slice(0, 10).map((move) => move.move.name).join(', ')}...
+          {pokemon.moves.slice(0, 10).map((move) => move.move.name).join(', ')}
         </p>
       </div>
     </div>
