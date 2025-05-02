@@ -1,6 +1,7 @@
 import { useParams } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import axios from 'axios';
+import { getTypeColour } from '../utils/pokemonTypeColour';
 
 const PokemonDetail = () => {
   const { id } = useParams();
@@ -44,7 +45,7 @@ const PokemonDetail = () => {
               {pokemon.types.map((typeObj, index) => (
                 <span
                   key={index}
-                  className="bg-gray-200 px-3 py-1 rounded-full text-sm capitalize"
+                  className={`${getTypeColour(typeObj.type.name)} text-white px-3 py-1 rounded-full text-sm capitalize`}
                 >
                   {typeObj.type.name}
                 </span>
