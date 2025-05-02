@@ -47,6 +47,7 @@ const Pagination = ({currentPage, setCurrentPage, totalPages, itemsPerPage, setI
                     <option value={10}>10 / page</option>
                     <option value={20}>20 / page</option>
                     <option value={50}>50 / page</option>
+                    <option value={150}>Show All</option>
                 </select>
             </div>
         </div>
