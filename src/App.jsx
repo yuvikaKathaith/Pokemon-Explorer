@@ -6,6 +6,7 @@ import FilterbyType from "./Components/FilterbyType";
 import PokemonList from "./Components/PokemonList";
 import SortOptions from "./Components/SortOptions";
 import PokemonDetail from './Components/PokemonDetail';
+import FavouritesPage from './Components/FavouritesPage';
 
 function App() {
   const [sortOption, setSortOption] = useState("id");
@@ -30,6 +31,7 @@ function App() {
           </>
         } />
         <Route path="/pokemon/:id" element={<PokemonDetail />} />
+        <Route path="/favourites" element={<FavouritesPage />} />
       </Routes>
     </>
   );
