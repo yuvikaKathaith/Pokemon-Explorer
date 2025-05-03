@@ -14,7 +14,7 @@ const FavouritesPage = () => {
   const firstPostIndex = lastPostIndex - itemsPerPage;
   const paginatedPokemons = favourites.slice(firstPostIndex, lastPostIndex);
 
-  if (favourites.length === 0) {
+  if (favourites.length === 0){
     return (
       <div className="text-center mt-10 text-lg text-gray-600">
         You haven’t added any favourites yet!
