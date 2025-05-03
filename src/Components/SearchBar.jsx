@@ -1,4 +1,7 @@
-const SearchBar = ({ searchTerm, setSearchTerm }) => {
+import { useFilter } from "../contexts/FilterProvider";
+
+const SearchBar = () => {
+  const { searchTerm, setSearchTerm } = useFilter();
   return (
     <div className="bg-[#353030] w-full h-auto py-6 px-4 sm:px-10 md:px-20 lg:px-20 flex flex-col justify-center items-center gap-3">
       <input

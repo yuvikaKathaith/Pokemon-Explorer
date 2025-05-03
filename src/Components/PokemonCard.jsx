@@ -1,11 +1,8 @@
 import React from "react";
 import { getTypeColour } from "../utils/pokemonTypeColour";
 import { Link } from "react-router-dom";
-import { useFavorites } from "../contexts/favouriteContext";
 
 const PokemonCard = ({ pokemon }) => {
-  const { favorites, toggleFavorite } = useFavorites();
-  const isFav = favorites.some((fav) => fav.id === pokemon.id);
   return (
     
       <div className="flex flex-col py-5 mx-auto rounded-md gap-5 flex-wrap w-[250px] sm:w-[250px] md:w-[250px]">
@@ -35,14 +32,6 @@ const PokemonCard = ({ pokemon }) => {
               </h1>
             </div>
           </Link>
-          <div className="p-4 relative">
-            <button
-              onClick={() => toggleFavorite(pokemon)}
-              className="absolute top-2 right-2 text-red-500 text-xl"
-            >
-              {isFav ? "❤️" : "🤍"}
-            </button>
-          </div>
         </div>
         {/* Types */}
         <div className="flex flex-wrap justify-center sm:justify-start gap-2 px-1">

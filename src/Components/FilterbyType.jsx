@@ -1,8 +1,10 @@
 import React from 'react';
 import { getTypeColour } from '../utils/pokemonTypeColour';
 import { pokemonTypes } from '../utils/pokemonTypes';
+import { useFilter } from '../contexts/FilterProvider';
 
-const FilterbyType = ({ selectedTypes, setSelectedTypes }) => {
+const FilterbyType = () => {
+  const {selectedTypes, setSelectedTypes } = useFilter();
   const toggleType = (type) => {
     if (selectedTypes.includes(type)) {
       setSelectedTypes(selectedTypes.filter((t) => t !== type));

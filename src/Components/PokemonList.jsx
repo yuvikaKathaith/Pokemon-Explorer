@@ -3,8 +3,10 @@ import axios from "axios";
 import PokemonCard from "./PokemonCard";
 import { PacmanLoader } from "react-spinners";
 import Pagination from "./Pagination";
+import { useFilter } from "../contexts/FilterProvider";
 
-const PokemonList = ({ searchTerm, selectedTypes, sortOption }) => {
+const PokemonList = ({ sortOption }) => {
+  const { searchTerm, selectedTypes } = useFilter();
   const [pokemonData, setPokemonData] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(false);

@@ -6,11 +6,8 @@ import FilterbyType from "./Components/FilterbyType";
 import PokemonList from "./Components/PokemonList";
 import SortOptions from "./Components/SortOptions";
 import PokemonDetail from './Components/PokemonDetail';
-import FavoritesPage from "./Components/FavouritePage";
 
 function App() {
-  const [searchTerm, setSearchTerm] = useState("");
-  const [selectedTypes, setSelectedTypes] = useState([]);
   const [sortOption, setSortOption] = useState("id");
 
   return (
@@ -19,23 +16,20 @@ function App() {
       <Routes>
         <Route path="/" element={
           <>
-            <SearchBar searchTerm={searchTerm} setSearchTerm={setSearchTerm} />
+            <SearchBar />
             <div className="flex flex-row justify-center items-center">
-              <FilterbyType
-                selectedTypes={selectedTypes}
-                setSelectedTypes={setSelectedTypes}
+              <FilterbyType />
+              <SortOptions 
+                sortOption={sortOption} 
+                setSortOption={setSortOption} 
               />
-              <SortOptions sortOption={sortOption} setSortOption={setSortOption} />
             </div>
             <PokemonList
-              searchTerm={searchTerm}
-              selectedTypes={selectedTypes}
               sortOption={sortOption}
             />
           </>
         } />
         <Route path="/pokemon/:id" element={<PokemonDetail />} />
-        <Route path="/favorites" element={<FavoritesPage />} />
       </Routes>
     </>
   );
