@@ -13,7 +13,7 @@ A fun web app to explore Pokémon by name, type, or ID. Fetches real-time data f
 ---
 
 ## 🚀 Tech Stack
-- React / Next.js
+- React
 - Tailwind CSS
 - PokéAPI (https://pokeapi.co/)
 
