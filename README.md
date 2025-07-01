@@ -10,7 +10,7 @@ A fun web app to explore Pokémon by name, type, or ID. Users can view details, 
 - 🔄 Responsive design for all screen sizes
 ---
 ## 🛠️ Tech Stack
-- React / Next.js
+- React 
 - Tailwind CSS
 - PokéAPI (https://pokeapi.co/)
 ---
