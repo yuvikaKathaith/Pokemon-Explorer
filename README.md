@@ -1,4 +1,5 @@
 ## Pokémon Explorer
+-
 A fun web app to explore Pokémon by name, type, or ID. Users can view details, stats, and even save their favorite Pokémon.
 ---
 ## ⚙️ Features
